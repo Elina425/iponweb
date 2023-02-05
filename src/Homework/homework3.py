@@ -2,106 +2,106 @@
 class Date:
     def __init__(self, day, month, year):
         if year>=0:
-            self._year = year
+            self.__year = year
         else:
             raise ValueError
             print("Invalid year")
         if 0<month<=12:
-            self._month = month
+            self.__month = month
         else:
             raise ValueError
             print("Invalid month")
         if 1<=day<=31:
-            self._day = day
+            self.__day = day
         else:
             raise ValueError
             print("Invalid days")
     @property
     def get_year(self):
-        return self._year
+        return self.__year
     @get_year.setter
     def set_year(self, val):
         self._year = val
         return self
     @get_year.deleter
     def delete_year(self):
-        del self._year
+        del self.__year
 
     @property
     def get_month(self):
-        return self._month
+        return self.__month
     @get_month.setter
     def set_month(self, val):
-        self._month = val
+        self.__month = val
         return self
     @get_month.deleter
     def delete_month(self):
-        del self._month
+        del self.__month
 
     @property
     def get_day(self):
-        return self._day
+        return self.__day
     @get_day.setter
     def set_day(self, val):
-        self._day = val
+        self.__day = val
         return self
     @get_day.deleter
     def delete_day(self):
         del self._day
     @get_day.deleter
     def delete_day(self):
-        del self._day
+        del self.__day
     def __repr__(self):
-        return "{}.{}.{}".format(self._day, self._month, self._year)
+        return "{}.{}.{}".format(self.__day, self.__month, self.__year)
 
     def add_day(self, days):
-        self._day += days
-        self._month += self._day // 31
-        self._month = self._month % 12
-        self._day = self._day % 31
-        self._year += self._month // 12
-        if self._month == 2 and self._day > 29 and self.is_leap_year():
-            self._day = 29
-        elif self._month == 2 and self._day > 28:
-            self._day = 28
+        self.__day += days
+        self.__month += self.__day // 31
+        self.__month = self.__month % 12
+        self.__day = self.__day % 31
+        self.__year += self.__month // 12
+        if self.__month == 2 and self.__day > 29 and self.is_leap_year():
+            self.__day = 29
+        elif self.__month == 2 and self.__day > 28:
+            self.__day = 28
         return self
 
     def add_month(self, months):
-        self._month += months
-        self._year = self._year + self._month // 12
+        self.__month += months
+        self.__year = self.__year + self.__month // 12
 
-        self._month = self._month % 12
+        self.__month = self.__month % 12
 
         return self
 
     def add_year(self, years):
-        self._year += years
+        self.__year += years
         return self
     def sub_day(self, days):
-        self._day-=days
-        self._month -=(self._day//31)
-        self._day %=31
-        self._year -= (self._month//12)
-        self._month %=12
-        if self._month == 2 and self._day > 29 and self.is_leap_year():
-            self._day = 29
-        elif self._month == 2 and self._day > 28:
-            self._day = 28
+        self.__day-=days
+        self.__month -=(self._day//31)
+        self.__day %=31
+        self.__year -= (self._month//12)
+        self.__month %=12
+        if self.__month == 2 and self._day > 29 and self.is_leap_year():
+            self.__day = 29
+        elif self.__month == 2 and self._day > 28:
+            self.__day = 28
         return self
     def sub_year(self, years):
-        self._year-=years
+        self.__year-=years
         return self
     def sub_month(self, months):
-        self._month-=months
-        self._year-=self._month//12
-        self._month%=12
+        self.__month-=months
+        self.__year-=self._month//12
+        self.__month%=12
         return self
 
 
     def is_leap_year(self):
-        if self._year % 4 == 0:
-            if self._year % 100 == 0:
-                if self._year % 400 == 0:
+        if self.__year % 4 == 0:
+            if self.__year % 100 == 0:
+                if self.__year % 400 == 0:
                     return True
                 else:
                     return False
@@ -118,64 +118,64 @@ print(date.add_day(50))
 print(date.get_day)
 class Time:
     def __init__(self, hour, minute, second):
-        self._hour = hour
-        self._minute = minute
-        self._second = second
+        self.__hour = hour
+        self.__minute = minute
+        self.__second = second
 
     def __repr__(self):
         return "{}:{}:{}".format(self._hour, self._minute, self._second)
 
     def add_second(self, seconds):
-        self._second += seconds
-        self._minute += self._second // 60
-        self._second %= 60
-        self._hour += self._minute // 60
-        self._minute %= 60
-        self._hour %= 24
+        self.__second += seconds
+        self.__minute += self._second // 60
+        self.__second %= 60
+        self.__hour += self._minute // 60
+        self.__minute %= 60
+        self.__hour %= 24
         return self
 
     def add_minute(self, minutes):
-        self._minute += minutes
-        self._hour += self._minute // 60
-        self._minute %= 60
-        self._hour %= 24
+        self.__minute += minutes
+        self.__hour += self._minute // 60
+        self.__minute %= 60
+        self.__hour %= 24
         return self
 
     def add_hour(self, hours):
-        self._hour += hours
-        self._hour %= 24
+        self.__hour += hours
+        self.__hour %= 24
         return self
     def sub_second(self, seconds):
-        self._second-=seconds
-        self._minute-=self._second//60
-        self._second%=60
-        self.hour -=self.minute//60
-        self._minute%=60
+        self.__second-=seconds
+        self.__minute-=self.__second//60
+        self.__second%=60
+        self.__hour -=self.minute//60
+        self.__minute%=60
         return self
     def sub_minute(self, minutes):
-        self._minute-=minutes
-        self._hour-=self._minute//60
-        self._minute%=60
+        self.__minute-=minutes
+        self.__hour-=self._minute//60
+        self.__minute%=60
         return self
     def sub_hour(self, hours):
-        self._hour -= hours
-        self._minute -= self._hour // 60
-        self._hour = self._hour % 60
-        self._second -= self._minute // 60
-        self._minute = self._minute % 60
+        self.__hour -= hours
+        self.__minute -= self._hour // 60
+        self.__hour = self._hour % 60
+        self.__second -= self._minute // 60
+        self.__minute = self._minute % 60
         return self
 
 
     def __add__(self, other):
-        new_hour = self._hour + other._hour
-        new_minute = self._minute + other._minute
-        new_second = self._second + other._second
+        new_hour = self.__hour + other._hour
+        new_minute = self.__minute + other._minute
+        new_second = self.__second + other._second
         return Time(new_hour, new_minute, new_second)
 
     def __sub__(self, other):
-        new_hour = self._hour - other._hour
-        new_minute = self._minute - other._minute
-        new_second = self._second - other._second
+        new_hour = self.__hour - other._hour
+        new_minute = self.__minute - other._minute
+        new_second = self.__second - other._second
         return Time(new_hour, new_minute, new_second)
 
 time1 = Time(1, 30, 45)

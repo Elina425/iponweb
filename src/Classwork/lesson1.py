@@ -17,14 +17,13 @@ def simple(n):
 # print(simple(1558))
 
 def sum_number(d):
-    sum_digit = 0
+    sum = 0
     stringify = str(d)
-    
-    for i in stringify:
-        make_int = int(i)
-        sum_digit = sum_digit + make_int
-    return sum_digit
-#print(sum_number(1234))
+    sum_digit = [int(i) for i in stringify]
+    for i in sum_digit:
+        sum += i
+    return sum
+print(sum_number(1234))
 
 def distance(x1,x2,y1,y2):
     dis = ((x1-x2)**2 + (y1-y2)**2)**0.5
@@ -34,7 +33,7 @@ def distance(x1,x2,y1,y2):
 def toxayin(s,n):
     return s[:n] + s[n+1:]
 
-# print(toxayin("12345", 1))
+print(toxayin("12345", 1))
 
 def reverse_fl(s):
     a = s[-1] + s[1:-1] + s[0]
@@ -45,8 +44,6 @@ def round(num):
     number = num * 100//1/100
     # num_str = str(number)
     return number
-
-# 
 
 def maximize(a,b,c):
     if (a>b and a>c):
@@ -131,12 +128,16 @@ def degree(n):
     return degree_helper(n, count)
 
 def degree_helper(n, count):
-    if(n<10):return count
+    if(n<10):
+        return count
     array = [int(i) for i in str(n)]
     n = sum(array)
     return degree_helper(n, count+1)
     
               
 print(degree(625))
+
+
+
 
     
