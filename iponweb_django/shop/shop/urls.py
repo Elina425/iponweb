@@ -15,7 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from .api.category import CategoryView
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    path("admin", admin.site.urls),
+    path("api/category", CategoryView.as_view()),
+    path("category/<int:id>", CategoryView.check_view)
+    # path("shop/", include('Amazon.urls')),
+
 ]
